@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/index', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/today-special', [App\Http\Controllers\HomeController::class, 'today']);
-Route::get('/menu', [App\Http\Controllers\HomeController::class, 'menu']);
-Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact']);
+Route::get('/today-special', [App\Http\Controllers\PostController::class, 'index']);
+
+Route::resource('menu', App\Http\Controllers\MenuController::class);
+
+Route::resource('contact', App\Http\Controllers\ContactController::class);
